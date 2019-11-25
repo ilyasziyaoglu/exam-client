@@ -7,7 +7,7 @@ import {
   NbUserModule,
   NbIconModule,
   NbSelectModule,
-  NbListModule,
+  NbListModule, NbActionsModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -55,23 +55,28 @@ import { EarningCardBackComponent } from './earning-card/back-side/earning-card-
 import { EarningPieChartComponent } from './earning-card/back-side/earning-pie-chart.component';
 import { EarningCardFrontComponent } from './earning-card/front-side/earning-card-front.component';
 import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earning-live-update-chart.component';
+import { UpcomingExamsComponent } from './upcoming-exams/upcoming-exams.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import {DashboardModule} from "../dashboard/dashboard.module";
 
 @NgModule({
-  imports: [
-    ThemeModule,
-    NbCardModule,
-    NbUserModule,
-    NbButtonModule,
-    NbIconModule,
-    NbTabsetModule,
-    NbSelectModule,
-    NbListModule,
-    ChartModule,
-    NbProgressBarModule,
-    NgxEchartsModule,
-    NgxChartsModule,
-    LeafletModule,
-  ],
+	imports: [
+		ThemeModule,
+		NbCardModule,
+		NbUserModule,
+		NbButtonModule,
+		NbIconModule,
+		NbTabsetModule,
+		NbSelectModule,
+		NbListModule,
+		ChartModule,
+		NbProgressBarModule,
+		NgxEchartsModule,
+		NgxChartsModule,
+		LeafletModule,
+		NbActionsModule,
+		DashboardModule,
+	],
   declarations: [
     ECommerceComponent,
     StatsCardFrontComponent,
@@ -105,6 +110,8 @@ import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earni
     EarningCardBackComponent,
     EarningPieChartComponent,
     EarningLiveUpdateChartComponent,
+    UpcomingExamsComponent,
+    TimelineComponent,
   ],
   providers: [
     CountryOrdersMapService,

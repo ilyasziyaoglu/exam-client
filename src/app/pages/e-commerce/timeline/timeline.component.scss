@@ -1,0 +1,83 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .timeline-arrow {
+    //color: white;
+    font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    background-color: #ffffff;
+  }
+
+  .right-arrow {
+    right: 0;
+    transform: translate(0%, -50%);
+  }
+
+  .left-arrow {
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  nb-card-body {
+    overflow: hidden;
+  }
+
+  .rod-capcule {
+    height: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .chaild-circle {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .parent-circle {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    z-index: 99;
+    display: block;
+    margin: auto;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 3rem;
+    background-color: white;
+  }
+
+  .rod{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: 10px;
+    background-color: #2d8ac7;
+  }
+
+  .center-wrapper {
+    position: relative;
+  }
+
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+}
