@@ -2,10 +2,30 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Editor',
+    icon: 'edit-outline',
+    link: '/pages/editor',
+    home: true,
+    children: [
+      {
+        title: 'Exam Editor',
+        link: '/pages/editor/exam-editor',
+      },
+      {
+        title: 'Question Editor',
+        link: '/pages/editor/question-editor',
+      },
+    ],
+  },
+  {
+    title: 'Student',
+    icon: 'person-outline',
+    link: '/pages/student',
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
-    home: true,
   },
   {
     title: 'IoT Dashboard',
