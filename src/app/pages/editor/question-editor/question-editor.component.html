@@ -1,0 +1,68 @@
+<nb-card>
+  <div class="row m-3">
+    <div class="col-sm-9">
+
+      <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary mt-3 mr-3">Yeni Sual</button>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-8 p-0 my-3">
+          <div class="md-form">
+            <textarea type="text" class="md-textarea form-control" rows="8" cols="14"></textarea>
+          </div>
+        </div>
+        <div class="col-sm-4 my-auto">
+          <select class="browser-default custom-select">
+            <option selected>Fennler</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="row mb-2" *ngFor="let option of question.options; let i=index">
+            <input type="text" class="form-control col-sm-10" placeholder="variant giriniz" [(ngModel)]="option.body">
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-squared-default btn-danger" (click)="deleteOption(i)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-primary float-right" (click)="newOption()">Yeni Variant</button>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <button type="button" class="btn btn-success mt-3 mr-3">Uygula</button>
+      </div>
+
+      <div class="row justify-content-center">
+        <nav>
+          <ul class="pagination pg-blue">
+            <li class="page-item disabled">
+              <a class="page-link"><i class="fas fa-arrow-circle-left"></i></a>
+            </li>
+
+            <li class="page-item active" *ngIf="currentPage>1"><a class="page-link">{{currentPage-1}}</a></li>
+            <li class="page-item active"><a class="page-link">{{currentPage}}</a></li>
+            <li class="page-item active" *ngIf="currentPage<pages.length"><a class="page-link">{{currentPage+1}}</a></li>
+
+            <li class="page-item">
+              <a class="page-link"><i class="fas fa-arrow-circle-right"></i></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+</nb-card>
