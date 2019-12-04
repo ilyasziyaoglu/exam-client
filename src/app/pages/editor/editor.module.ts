@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {EditorRoutingModule} from './editor-routing.module';
 import { ExamEditorComponent } from './exam-editor/exam-editor.component';
 import { QuestionEditorComponent } from './question-editor/question-editor.component';
-import {NbCardModule} from '@nebular/theme';
+import {NbCardModule, NbAccordionModule} from '@nebular/theme';
 import {FormsModule} from '@angular/forms';
 import {EditorComponent} from './editor.component';
 import {CommonModule} from '@angular/common';
@@ -28,6 +28,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatNativeDateModule,
     MatTableModule,
     MatTabsModule,
+    NbAccordionModule,
   ],
   declarations: [
     EditorComponent,

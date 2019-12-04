@@ -152,7 +152,10 @@
                   <i class="far fa-trash-alt"></i> Delete
                 </button>
                 <button type="button"
-                        class="btn btn-outline-primary float-right mr-2">
+                        class="btn btn-outline-primary float-right mr-2"
+                        (click)="onQuestionEdit(question)"
+                        routerLink="/pages/editor/question-editor" 
+                        routerLinkActive="active">
                   <i class="far fa-edit"></i> Edit
                 </button>
               </nb-card-header>
