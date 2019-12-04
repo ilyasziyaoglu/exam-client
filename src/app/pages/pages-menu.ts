@@ -20,7 +20,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Student',
     icon: 'person-outline',
-    link: '/pages/student',
+    link: '/pages/',
+    children: [
+      {
+        title: 'Home',
+        link: '/pages/home',
+      },
+      {
+        title: 'Exam Detail',
+        link: '/pages/exam',
+      },
+    ],
   },
   {
     title: 'E-commerce',

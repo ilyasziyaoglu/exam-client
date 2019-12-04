@@ -5,6 +5,8 @@ import {PagesComponent} from './pages.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ECommerceComponent} from './e-commerce/e-commerce.component';
 import {NotFoundComponent} from './miscellaneous/not-found/not-found.component';
+import {StudentHomeComponent} from './student/student-home/student-home.component';
+import {StudentExamDetailComponent} from './student/student-exam-detail/student-exam-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +19,14 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'home',
+      component: StudentHomeComponent,
+    },
+    {
+      path: 'exam',
+      component: StudentExamDetailComponent,
     },
     {
       path: 'student',
