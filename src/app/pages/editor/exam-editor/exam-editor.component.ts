@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'ngx-exam-editor',
@@ -40,10 +41,12 @@ export class ExamEditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private heroService: HeroService,
   ) {
   }
 
   ngOnInit() {
+
     for (let i = 1; i <= 25; i++) {
 
       const newQuestion = {
@@ -141,5 +144,9 @@ export class ExamEditorComponent implements OnInit {
 
   onAddNewQuestion() {
 
+  }
+
+  onQuestionEdit(question) {
+    this.heroService.changeQuestion(question);
   }
 }
