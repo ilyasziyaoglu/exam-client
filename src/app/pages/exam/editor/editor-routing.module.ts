@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {EditorComponent} from './editor.component';
-import {ExamEditorComponent} from '../../editor/exam-editor/exam-editor.component';
-import {QuestionEditorComponent} from '../../editor/question-editor/question-editor.component';
+import {ExamEditorComponent} from './exam-editor/exam-editor.component';
+import {QuestionEditorComponent} from './question-editor/question-editor.component';
 
 
 const routes: Routes = [{

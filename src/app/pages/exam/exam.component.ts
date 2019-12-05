@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-exam',
-  templateUrl: './exam.component.html',
-  styleUrls: ['./exam.component.scss']
+  template: '<router-outlet></router-outlet>',
 })
 export class ExamComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {FilterComponent} from '../exam/filter/filter.component';
-import {DetailComponent} from '../exam/detail/detail.component';
+import {FilterComponent} from './filter/filter.component';
+import {DetailComponent} from './detail/detail.component';
 import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
 import {AccountComponent} from './account/account.component';

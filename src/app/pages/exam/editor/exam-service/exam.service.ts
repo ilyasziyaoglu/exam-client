@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class HeroService {
+export class ExamService {
 
   private questionSource = new BehaviorSubject<any>({});
   currentQuestion = this.questionSource.asObservable();
@@ -19,11 +18,14 @@ export class HeroService {
   ]);
   currentSubject = this.subjectSource.asObservable();
 
+  constructor() {
+  }
+
   getQuestion(i: number) {
     return {
       id: i,
       order: i,
-      body: 'Bu '+ i +'. sorudur bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri',
+      body: 'Bu ' + i + '. sorudur bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri',
       options: [
         {
           body: 'perspiciatis',
@@ -49,11 +51,10 @@ export class HeroService {
     };
   }
 
-  constructor() { }
-
   changeQuestion(question: any) {
     this.questionSource.next(question);
   }
+
   changeQuestionOrder(order: number) {
     this.questionSource.next(this.getQuestion(order));
   }

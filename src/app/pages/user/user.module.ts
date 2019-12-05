@@ -12,15 +12,16 @@ import {UserComponent} from './user.component';
 @NgModule({
   declarations: [
     UserComponent,
-    FilterComponent,
-    DetailComponent,
-    CreateComponent,
-    EditComponent,
     AccountComponent,
+    CreateComponent,
+    DetailComponent,
+    EditComponent,
+    FilterComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
   ],
 })
-export class UserModule { }
+export class UserModule {
+}

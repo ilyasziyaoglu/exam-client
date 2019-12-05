@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
-import { HeroService } from '../hero.service';
+import { ExamService } from '../exam-service/exam.service';
 
 @Component({
   selector: 'ngx-exam-editor',
@@ -36,7 +36,7 @@ export class ExamEditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private heroService: HeroService,
+    private heroService: ExamService,
   ) {
   }
 

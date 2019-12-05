@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ngx-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss']
+  template: '<router-outlet></router-outlet>',
 })
 export class ReportComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

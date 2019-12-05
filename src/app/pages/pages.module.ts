@@ -5,12 +5,7 @@ import {ThemeModule} from '../@theme/theme.module';
 import {PagesComponent} from './pages.component';
 import {PagesRoutingModule} from './pages-routing.module';
 import {MiscellaneousModule} from './miscellaneus/miscellaneous.module';
-import {EditorModule} from './editor/editor.module';
-import { UserComponent } from './user/user.component';
-import { AnalysisComponent } from './analysis/analysis.component';
-import { ReportComponent } from './report/report.component';
-import { HomeComponent } from './home/home.component';
-import {ExamComponent} from './exam/exam.component';
+import {HomeComponent} from './home/home.component';
 import {ExamModule} from './exam/exam.module';
 import {UserModule} from './user/user.module';
 import {AnalysisModule} from './analysis/analysis.module';
@@ -23,7 +18,6 @@ import {ReportModule} from './report/report.module';
     ThemeModule,
     NbMenuModule,
     MiscellaneousModule,
-    EditorModule,
     ExamModule,
     UserModule,
     AnalysisModule,
