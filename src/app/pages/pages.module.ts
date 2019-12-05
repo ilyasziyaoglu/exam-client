@@ -3,15 +3,18 @@ import {NbMenuModule} from '@nebular/theme';
 
 import {ThemeModule} from '../@theme/theme.module';
 import {PagesComponent} from './pages.component';
-import {DashboardModule} from './dashboard/dashboard.module';
-import {ECommerceModule} from './e-commerce/e-commerce.module';
 import {PagesRoutingModule} from './pages-routing.module';
-import {MiscellaneousModule} from './miscellaneous/miscellaneous.module';
+import {MiscellaneousModule} from './miscellaneus/miscellaneous.module';
 import {EditorModule} from './editor/editor.module';
-import { StudentModule } from './student/student.module';
 import { UserComponent } from './user/user.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { ReportComponent } from './report/report.component';
+import { HomeComponent } from './home/home.component';
+import {ExamComponent} from './exam/exam.component';
+import {ExamModule} from './exam/exam.module';
+import {UserModule} from './user/user.module';
+import {AnalysisModule} from './analysis/analysis.module';
+import {ReportModule} from './report/report.module';
 
 
 @NgModule({
@@ -19,17 +22,16 @@ import { ReportComponent } from './report/report.component';
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
-    DashboardModule,
-    ECommerceModule,
     MiscellaneousModule,
     EditorModule,
-    StudentModule,
+    ExamModule,
+    UserModule,
+    AnalysisModule,
+    ReportModule,
   ],
   declarations: [
     PagesComponent,
-    UserComponent,
-    AnalysisComponent,
-    ReportComponent,
+    HomeComponent,
   ],
 })
 export class PagesModule {

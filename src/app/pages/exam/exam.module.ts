@@ -1,19 +1,28 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ExamComponent} from './exam.component';
 import {ExamRoutingModule} from './exam-routing.module';
-import { DetailComponent } from './detail/detail.component';
-import { SearchComponent } from './search/search.component';
-import { FilterComponent } from './filter/filter.component';
-import { EditorComponent } from './editor/editor.component';
-import { LiveExamComponent } from './live-exam/live-exam.component';
+import {DetailComponent} from './detail/detail.component';
+import {SearchComponent} from './search/search.component';
+import {FilterComponent} from './filter/filter.component';
+import {ResultComponent} from './result/result.component';
+import {ExamComponent} from './exam.component';
+import {EditorModule} from './editor/editor.module';
+import {LiveExamModule} from './live-exam/live-exam.module';
 
 
 @NgModule({
-  declarations: [ExamComponent, DetailComponent, SearchComponent, FilterComponent, EditorComponent, LiveExamComponent],
+  declarations: [
+    ExamComponent,
+    DetailComponent,
+    SearchComponent,
+    FilterComponent,
+    ResultComponent,
+  ],
   imports: [
     CommonModule,
     ExamRoutingModule,
+    EditorModule,
+    LiveExamModule,
   ],
 })
 export class ExamModule {

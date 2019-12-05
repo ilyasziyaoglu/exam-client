@@ -1,12 +1,47 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {FilterComponent} from '../exam/filter/filter.component';
+import {DetailComponent} from '../exam/detail/detail.component';
+import {CreateComponent} from './create/create.component';
+import {EditComponent} from './edit/edit.component';
+import {AccountComponent} from './account/account.component';
+import {UserComponent} from './user.component';
 
 
+const routes: Routes = [{
+  path: '',
+  component: UserComponent,
+  children: [
+    {
+      path: 'filter',
+      component: FilterComponent,
+    },
+    {
+      path: 'create',
+      component: CreateComponent,
+    },
+    {
+      path: 'edit',
+      component: EditComponent,
+    },
+    {
+      path: 'detail',
+      component: DetailComponent,
+    },
+    {
+      path: 'account',
+      component: AccountComponent,
+    },
+    {
+      path: '',
+      redirectTo: 'filter',
+      pathMatch: 'full',
+    },
+  ],
+}];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class UserRoutingModule { }

@@ -2,95 +2,40 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {ECommerceComponent} from './e-commerce/e-commerce.component';
-import {NotFoundComponent} from './miscellaneous/not-found/not-found.component';
-import {StudentHomeComponent} from './student/student-home/student-home.component';
-import {StudentExamDetailComponent} from './student/student-exam-detail/student-exam-detail.component';
+import {NotFoundComponent} from './miscellaneus/not-found/not-found.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
     {
-      path: 'dashboard',
-      component: ECommerceComponent,
-    },
-    {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
-    },
-    {
       path: 'home',
-      component: StudentHomeComponent,
+      component: HomeComponent,
     },
     {
       path: 'exam',
-      component: StudentExamDetailComponent,
+      loadChildren: () => import('./exam/exam.module')
+        .then(m => m.ExamModule),
     },
     {
-      path: 'student',
-      loadChildren: () => import('./student/student.module')
-        .then(m => m.StudentModule),
+      path: 'user',
+      loadChildren: () => import('./user/user.module')
+        .then(m => m.UserModule),
     },
     {
-      path: 'editor',
-      loadChildren: () => import('./editor/editor.module')
-        .then(m => m.EditorModule),
+      path: 'analysis',
+      loadChildren: () => import('./analysis/analysis.module')
+        .then(m => m.AnalysisModule),
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
-    {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
-    },
-    {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
-    },
-    {
-      path: 'modal-overlays',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
-        .then(m => m.ModalOverlaysModule),
-    },
-    {
-      path: 'extra-components',
-      loadChildren: () => import('./extra-components/extra-components.module')
-        .then(m => m.ExtraComponentsModule),
-    },
-    {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
-    },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
-    },
-    {
-      path: 'miscellaneous',
-      loadChildren: () => import('./miscellaneous/miscellaneous.module')
-        .then(m => m.MiscellaneousModule),
+      path: 'report',
+      loadChildren: () => import('./report/report.module')
+        .then(m => m.ReportModule),
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'home',
       pathMatch: 'full',
     },
     {
