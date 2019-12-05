@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
-import { ExamService } from '../exam-service/exam.service';
+import {Exam, ExamService} from '../exam-service/exam.service';
 
 @Component({
   selector: 'ngx-exam-editor',
@@ -33,54 +33,24 @@ export class ExamEditorComponent implements OnInit {
   });
   questions: any[] = [];
   optionLabels: string[] = ['A) ', 'B) ', 'C) ', 'D) ', 'E) '];
+  private exam: Exam;
 
   constructor(
     private fb: FormBuilder,
-    private heroService: ExamService,
+    private examService: ExamService,
   ) {
   }
 
   ngOnInit() {
 
-    this.heroService.currentSubject.subscribe(subject => {
+    this.examService.currentSubject.subscribe(subject => {
       this.subjects = subject;
     });
 
-    for (let i = 1; i <= 25; i++) {
-
-      const newQuestion = {
-        id: i,
-        order: i,
-        body: 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri',
-        options: [
-          {
-            body: 'perspiciatis',
-            isTrue: false,
-          },
-          {
-            body: 'nostrum',
-            isTrue: false,
-          },
-          {
-            body: 'tempor',
-            isTrue: false,
-          },
-          {
-            body: 'painful',
-            isTrue: false,
-          },
-          {
-            body: 'eos',
-            isTrue: false,
-          },
-        ],
-      };
-
-      newQuestion.options[Math.floor(Math.random() * 10 / 2)].isTrue = true;
-
-      this.questions.push(newQuestion);
-
-    }
+    this.examService.examObserver.subscribe(exam => {
+      this.exam = exam;
+      this.questions = exam.subjects[0].questions;
+    });
   }
 
   onSubmitExamGeneralInfo() {
@@ -146,6 +116,6 @@ export class ExamEditorComponent implements OnInit {
   }
 
   onQuestionEdit(question) {
-    this.heroService.changeQuestion(question);
+    this.examService.changeQuestion(question);
   }
 }

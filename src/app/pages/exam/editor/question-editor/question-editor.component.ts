@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ExamService} from '../exam-service/exam.service';
+import {Exam, ExamService} from '../exam-service/exam.service';
+import {FormBuilder, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'ngx-question-editor',
@@ -11,10 +12,16 @@ export class QuestionEditorComponent implements OnInit {
   question: any;
   subjects: any[];
   currentPage: number;
-  pages = [1, 2, 3, 4, 5, 6];
+  pages = [1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6];
+  private exam: Exam;
 
-  constructor(private heroService: ExamService) {
+  constructor(
+    private examService: ExamService,
+    private fb: FormBuilder,
+  ) {
   }
+
+  subjectSelect = new FormControl('');
 
   newOption() {
     this.question.options.push({body: '', isTrue: false});
@@ -29,18 +36,25 @@ export class QuestionEditorComponent implements OnInit {
   }
 
   goToQuestion(order: number) {
-    this.heroService.changeQuestionOrder(order);
+    this.examService.changeQuestionOrder(order);
   }
 
   ngOnInit() {
-    this.heroService.currentSubject.subscribe(subjects => {
+    this.examService.currentSubject.subscribe(subjects => {
       this.subjects = subjects;
     });
 
-    this.heroService.currentQuestion.subscribe(question => {
+    this.examService.currentQuestion.subscribe(question => {
       this.question = question;
       this.currentPage = question.order;
     });
+
+    this.examService.examObserver.subscribe(exam => {
+      this.exam = exam;
+    });
   }
 
+  onChangeSubject() {
+
+  }
 }

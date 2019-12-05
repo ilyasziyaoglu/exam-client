@@ -15,9 +15,13 @@
           </div>
         </div>
         <div class="col-sm-4 my-auto">
-          <select class="browser-default custom-select">
-            <option selected>Fennler</option>
-          </select>
+          <mat-form-field>
+            <mat-select [formControl]="subjectSelect"
+                        placeholder="Subject"
+                        (change)="onChangeSubject()">
+              <mat-option *ngFor="let subject of exam.subjects" [value]="subject">{{subject.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
 
