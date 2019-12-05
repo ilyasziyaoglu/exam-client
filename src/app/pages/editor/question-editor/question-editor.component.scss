@@ -1,3 +1,18 @@
 .paginationo {
-    border-radius: 50px !important;
+  border-radius: 50px !important;
+}
+
+.rounded-button {
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: .15rem;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
 }

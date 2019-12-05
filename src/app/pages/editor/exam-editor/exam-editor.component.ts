@@ -22,13 +22,8 @@ export class ExamEditorComponent implements OnInit {
     price: [, Validators.required],
   });
 
-  subjects: any[] = [
-    {name: 'Matematik', question_Count: '25', order: '1'},
-    {name: 'Fizik', question_Count: '25', order: '2'},
-    {name: 'Kimya', question_Count: '25', order: '3'},
-    {name: 'Ana Dili', question_Count: '25', order: '4'},
-    {name: 'Yabanci Dil', question_Count: '25', order: '5'},
-  ];
+  subjects: any[];
+
   subjectProperties: string[] = ['name', 'question_Count', 'order'];
   subjectPropertyTypes: string[] = ['text', 'number', 'number'];
   subjectsForm = this.fb.group({
@@ -46,6 +41,10 @@ export class ExamEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.heroService.currentSubject.subscribe(subject => {
+      this.subjects = subject;
+    });
 
     for (let i = 1; i <= 25; i++) {
 

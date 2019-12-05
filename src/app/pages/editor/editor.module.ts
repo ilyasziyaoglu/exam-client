@@ -8,7 +8,7 @@ import {EditorComponent} from './editor.component';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatGridListModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatTableModule} from "@angular/material/table";
@@ -26,6 +26,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatGridListModule,
     MatTableModule,
     MatTabsModule,
     NbAccordionModule,

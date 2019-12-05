@@ -9,61 +9,39 @@ import { HeroService } from '../hero.service';
 export class QuestionEditorComponent implements OnInit {
 
   question: any;
+  subjects: any[];
+  currentPage: number;
+  pages=[1,2,3,4,5,6];
+
+  constructor(private heroService: HeroService) {}
 
   newOption() {
-    this.question.options.push(
-      {
-        body:"",
-        isTrue: false
-      }
-    )
+    this.question.options.push({body:"", isTrue: false});
   }
-
-  currentPage: number;
-  pages=[
-    1,2,3,4,5,6
-  ]
 
   deleteOption(i: number) {
     this.question.options.splice(i);
   }
 
-  // question = {
-  //   body: 'asdjkashf jkahkfj njaksbnfas',
-  //   options: [
-  //     {
-  //       body: 'asdasdbaskjdb',
-  //       isTrue: false,
-  //     },
-  //     {
-  //       body: 'asdasdbaskjdb',
-  //       isTrue: false,
-  //     },
-  //   ],
-  // };
+  getArr(num: number) {
+    return new Array(num);
+  }
 
-  constructor(private heroService: HeroService) {
+  goToQuestion(order: number) {
+    this.heroService.changeQuestionOrder(order);
   }
 
   ngOnInit() {
-    // this.data.currentQuestion.subscribe(question => {
-    //   this.question = question;
-    //   console.log(question);
-    // } );
+    this.heroService.currentSubject.subscribe(subjects => {
+      this.subjects = subjects;
+      console.log(subjects);
+    });
 
-    this.heroService.currentQuestion
-        .subscribe(question => {
+    this.heroService.currentQuestion.subscribe(question => {
           this.question = question;
           console.log(this.question);
           this.currentPage = question.order;
         });
-
-    
   }
-
-  // getHeroes(): void {
-  //   this.heroService.currentQuestion
-  //       .subscribe(question => this.question = question);
-  // }
 
 }
