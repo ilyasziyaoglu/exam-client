@@ -10,9 +10,8 @@
       <div class="row">
         <div class="col-sm-8 p-0 my-3">
           <div class="md-form">
-            <textarea type="text"
-            class="md-textarea form-control" rows="8" cols="14"
-            [(ngModel)]="question.body"></textarea>
+            <textarea type="text" class="md-textarea form-control" rows="8" cols="14"
+              [(ngModel)]="question.body"></textarea>
           </div>
         </div>
         <div class="col-sm-4 my-auto">
@@ -65,36 +64,14 @@
     </div>
     <div class="col-sm-3">
       <nb-accordion multi>
-        <nb-accordion-item>
+        <nb-accordion-item *ngFor="let subject of subjects">
           <nb-accordion-item-header>
-            Product Details
+            {{subject.name}}
           </nb-accordion-item-header>
-          <nb-accordion-item-body>
-            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-            Originally, nebula was a name for any diffuse astronomical object,
-            including galaxies beyond the Milky Way.
-          </nb-accordion-item-body>
-        </nb-accordion-item>
-
-        <nb-accordion-item>
-          <nb-accordion-item-header>
-            Reviews
-          </nb-accordion-item-header>
-          <nb-accordion-item-body>
-            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-            Originally, nebula was a name for any diffuse astronomical object,
-            including galaxies beyond the Milky Way.
-          </nb-accordion-item-body>
-        </nb-accordion-item>
-
-        <nb-accordion-item>
-          <nb-accordion-item-header>
-            Edit
-          </nb-accordion-item-header>
-          <nb-accordion-item-body>
-            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-            Originally, nebula was a name for any diffuse astronomical object,
-            including galaxies beyond the Milky Way.
+          <nb-accordion-item-body class="d-flex flex-wrap">
+            <button type="button" class="btn btn-primary rounded-button"
+              *ngFor="let item of getArr(subject.question_Count); let i=index"
+              (click)="goToQuestion(i+1)">{{i+1}}</button>
           </nb-accordion-item-body>
         </nb-accordion-item>
       </nb-accordion>
