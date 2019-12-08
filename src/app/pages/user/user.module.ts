@@ -7,6 +7,10 @@ import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
 import {AccountComponent} from './account/account.component';
 import {UserComponent} from './user.component';
+import {NbCardModule} from '@nebular/theme';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -21,6 +25,10 @@ import {UserComponent} from './user.component';
   imports: [
     CommonModule,
     UserRoutingModule,
+    NbCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class UserModule {

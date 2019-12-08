@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {NbMenuModule} from '@nebular/theme';
+import {NbCardModule, NbIconModule, NbListModule, NbMenuModule} from '@nebular/theme';
 
 import {ThemeModule} from '../@theme/theme.module';
 import {PagesComponent} from './pages.component';
@@ -10,6 +10,8 @@ import {ExamModule} from './exam/exam.module';
 import {UserModule} from './user/user.module';
 import {AnalysisModule} from './analysis/analysis.module';
 import {ReportModule} from './report/report.module';
+import {TimelineComponent} from './home/timeline/timeline.component';
+import {UpcomingExamsComponent} from './home/upcoming-exams/upcoming-exams.component';
 
 
 @NgModule({
@@ -22,10 +24,15 @@ import {ReportModule} from './report/report.module';
     UserModule,
     AnalysisModule,
     ReportModule,
+    NbCardModule,
+    NbIconModule,
+    NbListModule,
   ],
   declarations: [
     PagesComponent,
     HomeComponent,
+    TimelineComponent,
+    UpcomingExamsComponent,
   ],
 })
 export class PagesModule {

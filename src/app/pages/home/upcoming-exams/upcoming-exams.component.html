@@ -1,0 +1,72 @@
+<div class="row">
+  <nb-list style="display: contents;">
+    <nb-list-item *ngFor="let i of [1,2,3]">
+      <nb-card size="medium">
+        <nb-card-header>
+          <div class="row">
+            <div class="col-sm-9">
+              <h2 class="vertical-center">Math</h2>
+            </div>
+            <div class="col-sm-3">
+              <nb-icon (click)="change()"
+                       icon="info-outline"
+                       pack="eva"
+                       class="info-icon"></nb-icon>
+            </div>
+          </div>
+        </nb-card-header>
+
+        <nb-card-body class="center-wrapper">
+          <img
+            [ngClass]="{
+								'center': true,
+								'h-100': thisImg.width/thisImg.height > 1.625,
+								'w-100': thisImg.width/thisImg.height < 1.625
+							}"
+            src="{{url}}"
+            #thisImg
+          >
+          <span class="date">Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32 sayılı bölümdeki bir satırdan gelmektedir.</span>
+        </nb-card-body>
+
+        <nb-card-footer>
+          <div class="info-band">
+            <div class="info-item">
+              <span class="caption">Time</span>
+              <i class="info-band-icon fas fa-clock"></i>
+              <span>13:30</span>
+            </div>
+            <div class="info-item">
+              <span class="caption">Date</span>
+              <i class="info-band-icon fas fa-calendar-alt"></i>
+              <span>7 Dec</span>
+            </div>
+            <div class="info-item">
+              <span class="caption">Duration</span>
+              <i class="info-band-icon fas fa-hourglass-start"></i>
+              <span>60'</span>
+            </div>
+            <div class="info-item">
+              <span class="caption">Price</span>
+              <i class="info-band-icon fas fa-money-bill-alt"></i>
+              <span>3 ₼</span>
+            </div>
+            <div class="info-item">
+              <span class="caption">Language</span>
+              <i class="info-band-icon fas fa-globe"></i>
+              <span>AZ</span>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col">
+              <i class="fas fa-user-edit text-success"></i> | <i class="fas fa-school text-success"></i>
+              <span class="text-secondary owner"> OWNER: </span> Emil Mammadov
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-success w-100">Register</button>
+        </nb-card-footer>
+      </nb-card>
+    </nb-list-item>
+  </nb-list>
+</div>

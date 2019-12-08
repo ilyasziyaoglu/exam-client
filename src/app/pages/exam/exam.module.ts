@@ -8,6 +8,7 @@ import {ResultComponent} from './result/result.component';
 import {ExamComponent} from './exam.component';
 import {EditorModule} from './editor/editor.module';
 import {LiveExamModule} from './live-exam/live-exam.module';
+import {NbCardModule} from "@nebular/theme";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {LiveExamModule} from './live-exam/live-exam.module';
     ExamRoutingModule,
     EditorModule,
     LiveExamModule,
+    NbCardModule,
   ],
 })
 export class ExamModule {

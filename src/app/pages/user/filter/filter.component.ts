@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ngx-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
+  teachers: any[] = ['Name Surname', 'Name Surname', 'Name Surname', 'Name Surname', 'Name Surname'];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

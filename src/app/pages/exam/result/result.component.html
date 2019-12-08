@@ -1,1 +1,119 @@
-<p>result works!</p>
+<nb-card>
+  <nb-card-header>
+    <h1>Exam Result</h1>
+  </nb-card-header>
+
+  <nb-card-body>
+    <div class="row">
+
+      <div class="col-sm-6 mt-2">
+        <span>NAME</span>
+        <h3>{{examResult.name}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>EXAM CODE</span>
+        <h3>{{examResult.code}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>CATEGORY</span>
+        <h3>{{examResult.type}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>DATE</span>
+        <h3>{{examResult.date.getDate() + '.' + (examResult.date.getMonth() + 1) + '.' + examResult.date.getFullYear()}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>TIME</span>
+        <h3>{{examResult.date.getHours() + ' : ' + examResult.date.getMinutes()}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>DURATION</span>
+        <h3>{{examResult.duration}}</h3>
+      </div>
+
+      <div class="col-sm-6 mt-2">
+        <span>SCORE</span>
+        <h3>{{examResult.score + ' / ' + examResult.maxScore}}</h3>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <div class="today">
+      <span class="today-temperature h1">SUMMARY</span>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2 d-flex flex-column justify-content-end align-items-end">
+        <span class="text-secondary text-center">STATUS</span>
+        <br>
+        <h5 class="font-weight-light">TOTAL</h5>
+        <h5 class="font-weight-light text-success">TRUE</h5>
+        <h5 class="font-weight-light text-danger">FALSE</h5>
+        <h5 class="font-weight-light text-secondary">BLANK</h5>
+        <h5 class="font-weight-light text-info">POINT</h5>
+      </div>
+      <div class="col d-flex flex-column justify-content-end align-items-center">
+        <i class="far fa-question-circle weather-icon"></i>
+        <i class="far fa-check-circle weather-icon text-success"></i>
+        <i class="far fa-times-circle weather-icon text-danger"></i>
+        <i class="far fa-eye-slash weather-icon text-secondary"></i>
+        <i class="fas fa-poll weather-icon text-info"></i>
+      </div>
+      <div class="col d-flex flex-column justify-content-end align-items-center"
+           *ngFor="let subject of examResult.subjects">
+        <span class="text-secondary text-center">{{subject.name.toUpperCase()}}</span>
+        <br>
+        <h5 class="font-weight-light">{{subject.question_Count}}</h5>
+        <h5 class="font-weight-light text-success">{{subject.trueCount}}</h5>
+        <h5 class="font-weight-light text-danger">{{subject.falseCount}}</h5>
+        <h5 class="font-weight-light text-secondary">{{subject.blankCount}}</h5>
+        <h5 class="font-weight-light text-info">{{subject.score}}</h5>
+      </div>
+      <div class="col d-flex flex-column justify-content-end align-items-center">
+        <h6 class="text-secondary text-center">TOTAL</h6>
+        <br>
+        <h5 >{{examResult.questionCount}}</h5>
+        <h5 class="text-success">{{examResult.trueCount}}</h5>
+        <h5 class="text-danger">{{examResult.falseCount}}</h5>
+        <h5 class="text-secondary">{{examResult.blankCount}}</h5>
+        <h5 class="text-info border border-info rounded px-2">{{examResult.score}}</h5>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>
+
+<nb-card *ngFor="let subject of examResult.subjects">
+  <nb-card-header>
+    <h2>{{subject.name.toUpperCase()}}</h2>
+  </nb-card-header>
+
+  <nb-card-body>
+    <div class="row d-flex justify-content-start">
+      <div class="col-sm-2 d-flex flex-column justify-content-end align-items-end">
+        <h5 class="font-weight-light text-secondary text-center">QUESTION</h5>
+        <h5 class="font-weight-light text-success">TRUE</h5>
+        <h5 class="font-weight-light text-danger">ANSWER</h5>
+        <h5 class="font-weight-light text-info">POINT</h5>
+      </div>
+      <div class="col question-check d-flex flex-column justify-content-end align-items-center"
+           *ngFor="let question of subject.questions">
+        <h5 class="font-weight-light text-secondary text-center">{{question.order}}</h5>
+        <h5 class="font-weight-light">{{options[question.trueOption]}}</h5>
+        <h5 class="font-weight-light text-danger"
+            [ngClass]="{'text-success': question.trueOption === question.answer, 'text-danger': question.trueOption !== question.answer}">
+          {{options[question.answer]}}
+        </h5>
+        <h5 class="font-weight-light text-info">{{question.point}}</h5>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
