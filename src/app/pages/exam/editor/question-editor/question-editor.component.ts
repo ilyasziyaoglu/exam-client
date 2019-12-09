@@ -12,6 +12,7 @@ export class QuestionEditorComponent implements OnInit {
   question: any;
   subjects: any[];
   currentPage: number;
+  correctAnswerOrder: number;
   pages = [1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6];
   private exam: Exam;
 
@@ -28,7 +29,7 @@ export class QuestionEditorComponent implements OnInit {
   }
 
   deleteOption(i: number) {
-    this.question.options.splice(i);
+    this.question.options.splice(i,1);
   }
 
   getArr(num: number) {
@@ -37,6 +38,13 @@ export class QuestionEditorComponent implements OnInit {
 
   goToQuestion(order: number) {
     this.examService.changeQuestionOrder(order);
+  }
+
+  correctOptionClick(i: number) {
+    for(let option of this.question.options) {
+      option.isTrue = false;
+    }
+    this.question.options[i].isTrue = true;
   }
 
   ngOnInit() {
