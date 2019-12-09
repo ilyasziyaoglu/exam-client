@@ -7,21 +7,18 @@
       </div>
 
 
-      <div class="row">
-        <div class="col-sm-8 p-0 my-3">
+      <div class="row my-3">
+        <div class="col-sm-8 p-0">
           <div class="md-form">
             <textarea type="text" class="md-textarea form-control" rows="8" cols="14"
               [(ngModel)]="question.body"></textarea>
           </div>
         </div>
-        <div class="col-sm-4 my-auto">
-          <mat-form-field>
-            <mat-select [formControl]="subjectSelect"
-                        placeholder="Subject"
-                        (change)="onChangeSubject()">
-              <mat-option *ngFor="let subject of exam.subjects" [value]="subject">{{subject.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div class="col-sm-4">
+          <select class="custom-select" (change)="onChangeSubject()">
+            <option selected disabled>Subjects</option>
+            <option *ngFor="let subject of exam.subjects" [value]="subject">{{subject.name}}</option>
+          </select>
         </div>
       </div>
 
@@ -29,13 +26,21 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="row mb-2" *ngFor="let option of question.options; let i=index">
-            <input type="text" class="form-control col-sm-10" placeholder="variant giriniz" [(ngModel)]="option.body">
-            <div class="col-sm-2">
-              <button type="button" class="btn btn-squared-default btn-danger" (click)="deleteOption(i)">
-                <i class="fas fa-trash"></i>
-              </button>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button type="button" class="btn btn-squared-default btn-success" (click)="correctOptionClick(i)">
+                  <i class="fas fa-check"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control col-sm-10" placeholder="variant giriniz" [(ngModel)]="option.body">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-squared-default btn-danger" (click)="deleteOption(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
+
         </div>
         <div class="col-sm-6">
           <button type="button" class="btn btn-primary float-right" (click)="newOption()">Yeni Variant</button>
@@ -67,7 +72,7 @@
 
     </div>
     <div class="col-sm-3">
-      <nb-accordion multi>
+      <nb-accordion>
         <nb-accordion-item *ngFor="let subject of subjects">
           <nb-accordion-item-header>
             {{subject.name}}

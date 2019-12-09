@@ -116,6 +116,6 @@ export class ExamEditorComponent implements OnInit {
   }
 
   onQuestionEdit(question) {
-    this.examService.changeQuestion(question);
+    this.examService.changeCurrentQuestion(question);
   }
 }

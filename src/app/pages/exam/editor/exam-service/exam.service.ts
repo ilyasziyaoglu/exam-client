@@ -112,7 +112,7 @@ export class ExamService {
         },
         {
           body: 'nostrum',
-          isTrue: false,
+          isTrue: true,
         },
         {
           body: 'tempor',
@@ -130,7 +130,7 @@ export class ExamService {
     };
   }
 
-  changeQuestion(question: any) {
+  changeCurrentQuestion(question: any) {
     this.questionSource.next(question);
   }
 
