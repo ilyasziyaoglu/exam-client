@@ -16,10 +16,7 @@ export class QuestionEditorComponent implements OnInit {
   pages = [1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6];
   private exam: Exam;
 
-  constructor(
-    private examService: ExamService,
-    private fb: FormBuilder,
-  ) {
+  constructor(private examService: ExamService, private fb: FormBuilder) {
   }
 
   subjectSelect = new FormControl('');
@@ -29,7 +26,7 @@ export class QuestionEditorComponent implements OnInit {
   }
 
   deleteOption(i: number) {
-    this.question.options.splice(i,1);
+    this.question.options.splice(i, 1);
   }
 
   getArr(num: number) {
@@ -41,7 +38,7 @@ export class QuestionEditorComponent implements OnInit {
   }
 
   correctOptionClick(i: number) {
-    for(let option of this.question.options) {
+    for (const option of this.question.options) {
       option.isTrue = false;
     }
     this.question.options[i].isTrue = true;
@@ -57,7 +54,7 @@ export class QuestionEditorComponent implements OnInit {
       this.currentPage = question.order;
     });
 
-    this.examService.examObserver.subscribe(exam => {
+    this.examService.examObservable.subscribe(exam => {
       this.exam = exam;
     });
   }

@@ -47,7 +47,7 @@ export class ExamEditorComponent implements OnInit {
       this.subjects = subject;
     });
 
-    this.examService.examObserver.subscribe(exam => {
+    this.examService.examObservable.subscribe(exam => {
       this.exam = exam;
       this.questions = exam.subjects[0].questions;
     });

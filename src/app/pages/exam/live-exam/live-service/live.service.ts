@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 export class Option {
   id: number;
@@ -37,7 +37,7 @@ export class Exam {
 @Injectable({
   providedIn: 'root',
 })
-export class ExamService {
+export class LiveService {
 
   exam: Exam = {
     name: 'Exam Name',
@@ -59,7 +59,7 @@ export class ExamService {
   currentQuestion = this.questionSource.asObservable();
 
   private subjectSource = new BehaviorSubject<any[]>(this.exam.subjects);
-  currentSubject = this.subjectSource.asObservable();
+  subjectObservable = this.subjectSource.asObservable();
 
   private examSource = new BehaviorSubject<Exam>(this.exam);
   examObservable = this.examSource.asObservable();
