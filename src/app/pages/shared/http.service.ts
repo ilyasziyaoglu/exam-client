@@ -1,16 +1,19 @@
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {map} from 'rxjs/operators';
-import CommonUtils from './common.utils';
-import Swal from 'sweetalert2';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import CommonUtils from '../shared/common.utils';
+import Swal from 'sweetalert2';
 
-@Injectable()
-export class Service {
-  private httpClient: any;
-
-  constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
+@Injectable({
+  providedIn: 'root',
+})
+export class HttpService {
+  constructor(
+    private http: HttpClient,
+    private spinner: NgxSpinnerService,
+  ) {
   }
 
   head<T>(url: string, params?: HttpParams): Observable<any> {

@@ -13,7 +13,6 @@ import {ReportModule} from './report/report.module';
 import {TimelineComponent} from './home/timeline/timeline.component';
 import {UpcomingExamsComponent} from './home/upcoming-exams/upcoming-exams.component';
 
-
 @NgModule({
   imports: [
     PagesRoutingModule,
