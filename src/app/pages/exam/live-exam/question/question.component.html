@@ -1,32 +1,93 @@
 <div>
   <div class="row">
     <div class="col-sm-9">
-      <div class="row my-3">
-        <nb-card class="col-sm-8 p-2">
-          <div>
-            <p class="wrap-class">
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
-              dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdaf
-            </p>
-          </div>
+
+
+      <div class="row">
+        <nb-card class="p-2 justify-content-center">
+          <p class="text-primary font-weight-bolder">Bitişe Kalan Süre</p>
+          <p class="text-secondary font-weight-bolder" [style.font-size.em]="'2'">{{remainingTime}}</p>
         </nb-card>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8">
+
+          <div class="row">
+            <nb-card>
+              <div>
+                <p class="wrap-class">
+                  dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
+                  dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
+                  dddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>sdjlbfsdafdddddddddjasdbf<br>
+                </p>
+              </div>
+            </nb-card>
+          </div>
+
+
+            <div class="inputGroup" *ngFor="let option of question.options; let i=index">
+              <input id="{{i}}" type="radio"/>
+              <label for="{{i}}">{{option.body}}</label>
+            </div>
+
+        </div>
+
         <div class="col-sm-4">
           <div class="row">
             <button type="button" class="btn btn-warning rounded2"
                     (click)="getQuestion()">?<br>Şübheli
             </button>
           </div>
-          <div class="row" style="position: absolute">
+          <div class="row">
             <button type="button" class="btn btn-primary mt-3"
-                    (click)="getQuestion()">Seçeneği Temizle</button>
+                    (click)="getQuestion()">Seçeneği Temizle
+            </button>
           </div>
         </div>
       </div>
+
+
+      <div class="row justify-content-center">
+
+        <div class="col-sm-4">
+          <nb-card class="pl-3 pt-2">
+            <p class="text-primary font-weight-bolder">İşaretlenmiş: {{examLiveInfo.marked}}</p>
+            <p class="text-secondary font-weight-bolder">İşaretlenmemiş: {{examLiveInfo.unmarked}}</p>
+            <p class="text-warning font-weight-bolder">Şüpheli: {{examLiveInfo.dubious}}</p>
+          </nb-card>
+        </div>
+
+
+        <div class="col-sm-3">
+          <nav>
+            <ul class="pagination pg-blue">
+              <li class="page-item disabled">
+                <a class="page-link"><i class="fas fa-arrow-circle-left"></i></a>
+              </li>
+
+              <li class="page-item" *ngIf="currentPage>1"><a class="page-link">{{currentPage - 1}}</a></li>
+              <li class="page-item active"><a class="page-link">{{currentPage}}</a></li>
+              <li class="page-item" *ngIf="currentPage<pages.length"><a class="page-link">{{currentPage + 1}}</a></li>
+
+              <li class="page-item">
+                <a class="page-link"><i class="fas fa-arrow-circle-right"></i></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+
+        <div class="col-sm-3">
+          <button type="button" class="btn btn-danger"
+                  (click)="endExam()">Sınavı Bitir
+          </button>
+        </div>
+
+
+      </div>
+
     </div>
 
 
@@ -39,7 +100,7 @@
           <nb-accordion-item-body class="d-flex flex-wrap">
             <button type="button" class="btn btn-primary rounded-button"
                     *ngFor="let item of getArr(subject.question_Count); let i=index"
-                    (click)="getQuestion()">{{i + 1}}</button>
+                    (click)="getQuestion(i+1)">{{i + 1}}</button>
           </nb-accordion-item-body>
         </nb-accordion-item>
       </nb-accordion>

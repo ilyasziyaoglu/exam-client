@@ -14,6 +14,12 @@ export class QuestionComponent implements OnInit {
   subjects: any[];
   currentPage: number;
   correctAnswerOrder: number;
+  remainingTime: string = '0:25:33';
+  examLiveInfo: any = {
+    marked: 12,
+    unmarked: 26,
+    dubious: 5,
+  };
   pages = [1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6];
   private exam: Exam;
 
@@ -39,6 +45,10 @@ export class QuestionComponent implements OnInit {
 
   getArr(num: number) {
     return new Array(num);
+  }
+
+  getQuestion(order: number) {
+    this.liveService.changeQuestionOrder(order);
   }
 
 }
