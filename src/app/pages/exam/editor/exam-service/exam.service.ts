@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {HttpService} from '../../../shared/http.service';
 
 export class Option {
   id: number;
   type: string;
   body: string;
   imageUrl: string;
-  isTrue: boolean;
 }
 
 export class Question {
   id: number;
   order: number;
   body: string;
+  trueOption: number;
   options: Option[];
 }
 
@@ -39,42 +40,65 @@ export class Exam {
 })
 export class ExamService {
 
-  exam: Exam = {
-    name: 'Exam Name',
-    type: 'Exam Type',
-    code: 'Exam Code',
-    date: new Date(),
-    duration: 125,
-    price: 25,
-    subjects: [
-      {id: 1, name: 'Matematik', question_Count: 25, order: 1, questions: []},
-      {id: 2, name: 'Fizik', question_Count: 10, order: 2, questions: []},
-      {id: 3, name: 'Kimya', question_Count: 30, order: 3, questions: []},
-      {id: 4, name: 'Ana Dili', question_Count: 40, order: 4, questions: []},
-      {id: 5, name: 'Yabanci Dil', question_Count: 55, order: 5, questions: []},
-    ],
-  };
+  exam: Exam;
 
   private questionSource = new BehaviorSubject<any>({});
   currentQuestion = this.questionSource.asObservable();
-
   private subjectSource = new BehaviorSubject<any[]>(this.exam.subjects);
   currentSubject = this.subjectSource.asObservable();
-
   private examSource = new BehaviorSubject<Exam>(this.exam);
   examObservable = this.examSource.asObservable();
 
-  constructor() {
-    this.exam = this.generateRandomQuestions(this.exam);
+  constructor(
+    private service: HttpService,
+  ) {
+    this.exam = this.generateRandomExam();
   }
 
-  generateRandomQuestions(exam: Exam) {
-    exam.subjects.forEach(subject => {
+  saveExam(exam: Exam) {
+    const req = this.exam;
+    this.service.httpRequest('post', 'exam', req);
+  }
 
+  getExam(examId: number) {
+    this.service.httpRequest('get', 'exam/' + examId, null, res => {
+      this.exam = res;
+    });
+  }
+
+  generateRandomExam(): Exam {
+
+    // Generate exam.
+    const exam: Exam = {
+      name: 'Exam Name',
+      type: 'Exam Type',
+      code: 'Exam Code',
+      date: new Date(),
+      duration: 0,
+      price: 25,
+      subjects: [],
+    };
+
+    // Generate subjects.
+    const subjects = ['Matematik', 'Kimya', 'Fizik', 'Ana Dili', 'Yabanci Dil'];
+    for (let i = 0; i < subjects.length; i++) {
+      const subject: Subject = {
+        id: i + 1,
+        name: subjects[i],
+        question_Count: Math.floor(Math.random() * 40),
+        order: i + 1,
+        questions: [],
+      };
+      exam.subjects.push(subject);
+    }
+
+    // Generate questions.
+    exam.subjects.forEach((subject, index) => {
       for (let i = 1; i <= subject.question_Count; i++) {
         const newQuestion: Question = {
           id: i,
           order: i,
+          trueOption: Math.floor(Math.random() * 5),
           body: 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. ' +
             'Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak ' +
             'üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri',
@@ -83,15 +107,12 @@ export class ExamService {
 
         for (let j = 0; j < 5; j++) {
           newQuestion.options.push({
-            id: i * 5 + j,
+            id: index * subject.question_Count + i * 5 + j,
             type: '',
             body: 'Option',
             imageUrl: '',
-            isTrue: false,
           });
         }
-
-        newQuestion.options[Math.floor(Math.random() * 10 / 2)].isTrue = true;
 
         subject.questions.push(newQuestion);
       }
@@ -99,34 +120,8 @@ export class ExamService {
     return exam;
   }
 
-  getQuestion(i: number) {
-    return {
-      id: i,
-      order: i,
-      body: 'Bu ' + i + '. sorudur bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri',
-      options: [
-        {
-          body: 'perspiciatis',
-          isTrue: false,
-        },
-        {
-          body: 'nostrum',
-          isTrue: true,
-        },
-        {
-          body: 'tempor',
-          isTrue: false,
-        },
-        {
-          body: 'painful',
-          isTrue: false,
-        },
-        {
-          body: 'eos',
-          isTrue: false,
-        },
-      ],
-    };
+  getQuestion(i: number): Question {
+    return this.exam.subjects[0].questions.sort((a, b) => a.order - b.order)[i];
   }
 
   changeCurrentQuestion(question: any) {

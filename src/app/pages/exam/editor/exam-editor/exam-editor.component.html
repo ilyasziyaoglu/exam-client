@@ -128,11 +128,13 @@
 <nb-card>
   <nb-card-header>
     <h4>Questions</h4>
-    <button type="button"
+    <a type="button"
             (click)="onAddNewQuestion()"
+            routerLink="/pages/exam/editor/question-editor"
+            routerLinkActive="active"
             class="btn btn-outline-primary add-subject float-right">
       <i class="fas fa-plus"></i> Add New
-    </button>
+    </a>
   </nb-card-header>
 
   <nb-card-body>
@@ -140,7 +142,7 @@
     <mat-tab-group>
       <mat-tab *ngFor="let subject of subjects" label="{{subject.name.toUpperCase()}}">
 
-        <div class="row">
+        <div *ngIf="questions != null" class="row">
 
           <div class="col-sm-4" *ngFor="let question of questions">
             <nb-card>
@@ -163,10 +165,10 @@
               <nb-card-footer>
                 <div class="row">
                   <div class="col option m-2 p-2"
-                       [ngClass]="{'': option.isTrue}"
-                       *ngFor="let option of question.options; let i = index">
+                       *ngFor="let option of question.options; let i = index"
+                       [ngClass]="{'': question.trueOption === i}">
                     {{optionLabels[i] + option.body}}
-                    <i *ngIf="option.isTrue" class="fas fa-check-circle btn-outline-success ml-3"></i>
+                    <i *ngIf="question.trueOption === i" class="fas fa-check-circle btn-outline-success ml-3"></i>
                   </div>
                 </div>
               </nb-card-footer>

@@ -5,6 +5,7 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {AnalyticsService} from './@core/utils';
+import {HttpService} from './pages/shared/http.service';
 
 @Component({
   selector: 'ngx-app',
@@ -23,7 +24,10 @@ import {AnalyticsService} from './@core/utils';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService) {
+  constructor(
+    private analytics: AnalyticsService,
+    public service: HttpService,
+  ) {
   }
 
   ngOnInit(): void {

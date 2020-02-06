@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {Exam, ExamService} from '../exam-service/exam.service';
@@ -8,7 +8,7 @@ import {Exam, ExamService} from '../exam-service/exam.service';
   templateUrl: './exam-editor.component.html',
   styleUrls: ['./exam-editor.component.scss'],
 })
-export class ExamEditorComponent implements OnInit {
+export class ExamEditorComponent implements OnInit, AfterViewInit {
 
   generalExamInfoEditMode = true;
   examProperties: string[] = ['name', 'type', 'date', 'time', 'duration', 'price'];
@@ -43,6 +43,7 @@ export class ExamEditorComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.examService.currentSubject.subscribe(subject => {
       this.subjects = subject;
     });
@@ -51,6 +52,10 @@ export class ExamEditorComponent implements OnInit {
       this.exam = exam;
       this.questions = exam.subjects[0].questions;
     });
+  }
+
+  ngAfterViewInit() {
+    this.examService.getExam(1);
   }
 
   onSubmitExamGeneralInfo() {

@@ -21,9 +21,12 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {HttpService} from './pages/shared/http.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -17,8 +17,10 @@ export class QuestionComponent implements OnInit {
   pages = [1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6];
   private exam: Exam;
 
-  constructor(private liveService: LiveService, private fb: FormBuilder) {
-  }
+  constructor(
+    private liveService: LiveService,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit() {
     this.liveService.subjectObservable.subscribe(subjects => {

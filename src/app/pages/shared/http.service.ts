@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import CommonUtils from '../shared/common.utils';
 import Swal from 'sweetalert2';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -54,8 +55,9 @@ export class HttpService {
     }));
   }
 
-  httpRequest(method, url, req?, cb?) {
+  httpRequest(method: string, url: string, req?: any, cb?: any) {
     const self = this;
+    url = environment.baseServerUrl + url;
     self.spinner.show();
     let request;
     switch (method) {
@@ -73,16 +75,15 @@ export class HttpService {
         break;
     }
     request.subscribe(response => {
+      self.spinner.hide();
       if (CommonUtils.isSuccess(response.status)) {
         if (cb) {
           cb(response.result);
         }
       } else {
-        self.spinner.hide();
         Swal.fire(response.message || 'Can not get object.');
       }
     }, err => {
-      self.spinner.hide();
       Swal.fire('Can not get object.');
     });
   }
